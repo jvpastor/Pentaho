@@ -1,0 +1,80 @@
+<Schema name="Schema_fdelafuentem">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="ASIGNATURA">
+    <Hierarchy name="ASIGNATURA" visible="true" hasAll="true" primaryKey="id_asignatura">
+      <Table name="dim_asignatura">
+      </Table>
+      <Level name="ASIGNATURA" visible="true" table="dim_asignatura" column="id_asignatura" nameColumn="desc" ordinalColumn="desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="NIVEL">
+    <Hierarchy name="NIVEL" visible="true" hasAll="true" primaryKey="id_nivel">
+      <Table name="dim_nivel">
+      </Table>
+      <Level name="NIVEL" visible="true" table="dim_nivel" column="id_nivel" nameColumn="desc" ordinalColumn="desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="USER">
+    <Hierarchy name="USER" visible="true" hasAll="true" primaryKey="id_user">
+      <Table name="dim_user">
+      </Table>
+      <Level name="USER" visible="true" table="dim_user" column="id_user" nameColumn="desc" ordinalColumn="desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="PRODUCTO">
+    <Hierarchy name="PRODUCTO" visible="true" hasAll="true" primaryKey="id_producto">
+      <Table name="dim_producto">
+      </Table>
+      <Level name="PRODUCTO" visible="true" table="dim_producto" column="id_producto" nameColumn="desc" ordinalColumn="desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="CURSO">
+    <Hierarchy name="CURSO" visible="true" hasAll="true" primaryKey="id_curso">
+      <Table name="dim_curso">
+      </Table>
+      <Level name="CURSO" visible="true" table="dim_curso" column="id_curso" nameColumn="desc" ordinalColumn="desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="TITULO">
+    <Hierarchy name="TITULO" visible="true" hasAll="true" primaryKey="id_titulo">
+      <Table name="dim_titulo">
+      </Table>
+      <Level name="TITULO" visible="true" table="dim_titulo" column="id_titulo" nameColumn="desc" ordinalColumn="desc" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="UAH" visible="true" cache="true" enabled="true">
+    <Table name="fact_fichero">
+    </Table>
+    <DimensionUsage source="ASIGNATURA" name="ASIGNATURA" visible="true" foreignKey="id_asignatura" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="NIVEL" name="NIVEL" visible="true" foreignKey="id_nivel" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="USER" name="USER" visible="true" foreignKey="id_user" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="PRODUCTO" name="PRODUCTO" visible="true" foreignKey="id_producto" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="CURSO" name="CURSO" visible="true" foreignKey="id_curso" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="TITULO" name="TITULO" visible="true" foreignKey="id_titulo" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Nota" column="c_notas" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Resaltar" column="c_resaltar_texto" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Subrayar" column="c_subrayar_texto" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Tachar" column="c_tachar_texto" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Mano_alzada" column="c_mano_alzada" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Rectangulo" column="c_rectangulo" aggregator="sum" visible="true">
+    </Measure>
+    <Measure name="Elipse" column="c_elipse" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
